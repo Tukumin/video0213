@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>ある人の行為が倫理的に正しいか間違っているかを判断する時に、次のような判断材料はあなたの考え方にどの程度関係しますか。以下の尺度を用いて評価してください。</h1>
+    <h3>0:全く関係がない(正しいか間違っているかの判断に全く無関係である) 1:あまり関係がない 2:わずかに関係がある 3:やや関係がある 4:とても関係がある 5:極めて関係がある(正しいか間違っているかの判断に最も重要である)</h3>
+    
+    <br>
+    <h3>初めに、ニックネームを入力してください（本名でも、そうでなくても構いません）</h3>
+    <label>半角英字で入力してください：<input type="text" size="40" id="nameText"></label>
+    <input type="button" value="Check" id="checkButton">
+    <p id="msg"></p>
+
+    <form name="myform">
+        <br>
+        <h4>誰かが精神的に傷ついたかどうか</h4>
+        <input type="radio" name="fruit" value="0">0
+        <input type="radio" name="fruit" value="1">1
+        <input type="radio" name="fruit" value="2">2
+        <input type="radio" name="fruit" value="3">3
+        <input type="radio" name="fruit" value="4">4
+        <input type="radio" name="fruit" value="5">5
+        <h4>弱い人や傷つきやすい人に対する配慮があったかどうか</h4>
+        <input type="radio" name="two" value="0">0
+        <input type="radio" name="two" value="1">1
+        <input type="radio" name="two" value="2">2
+        <input type="radio" name="two" value="3">3
+        <input type="radio" name="two" value="4">4
+        <input type="radio" name="two" value="5">5
+        <h4>その人が残虐であったかどうか</h4>
+        <input type="radio" name="three" value="0">0
+        <input type="radio" name="three" value="1">1
+        <input type="radio" name="three" value="2">2
+        <input type="radio" name="three" value="3">3
+        <input type="radio" name="three" value="4">4
+        <input type="radio" name="three" value="5">5
+        <br>
+        <input type="hidden" name="total" value="0"> 
+        </form>
+
+     <form name="myform2">
+        <h4>不公平な行動をとっていたかどうか</h4>
+        <input type="radio" name="a" value="0">0
+        <input type="radio" name="a" value="1">1
+        <input type="radio" name="a" value="2">2
+        <input type="radio" name="a" value="3">3
+        <input type="radio" name="a" value="4">4
+        <input type="radio" name="a" value="5">5
+        <h4>一部の人々が他とは違う扱いを受けていたかどうか</h4>
+        <input type="radio" name="b" value="0">0
+        <input type="radio" name="b" value="1">1
+        <input type="radio" name="b" value="2">2
+        <input type="radio" name="b" value="3">3
+        <input type="radio" name="b" value="4">4
+        <input type="radio" name="b" value="5">5
+        <h4>誰かの権利がないがしろにされていたかどうか</h4>
+        <input type="radio" name="c" value="0">0
+        <input type="radio" name="c" value="1">1
+        <input type="radio" name="c" value="2">2
+        <input type="radio" name="c" value="3">3
+        <input type="radio" name="c" value="4">4
+        <input type="radio" name="c" value="5">5
+        <br>
+        <input type="hidden" name="total" value="0"> 
+
+        </form>
+
+    <form name="myform3">
+        <h4>その人の行動が仲間に対して献身的であったかどうか</h4>
+        <input type="radio" name="a1" value="0">0
+        <input type="radio" name="a1" value="1">1
+        <input type="radio" name="a1" value="2">2
+        <input type="radio" name="a1" value="3">3
+        <input type="radio" name="a1" value="4">4
+        <input type="radio" name="a1" value="5">5
+        <h4>自分の所属する集団の和を乱したかどうか</h4>
+        <input type="radio" name="b1" value="0">0
+        <input type="radio" name="b1" value="1">1
+        <input type="radio" name="b1" value="2">2
+        <input type="radio" name="b1" value="3">3
+        <input type="radio" name="b1" value="4">4
+        <input type="radio" name="b1" value="5">5
+        <h4>その人が家族思いであったかどうか</h4>
+        <input type="radio" name="c1" value="0">0
+        <input type="radio" name="c1" value="1">1
+        <input type="radio" name="c1" value="2">2
+        <input type="radio" name="c1" value="3">3
+        <input type="radio" name="c1" value="4">4
+        <input type="radio" name="c1" value="5">5
+        <br>
+        <input type="hidden" name="total" value="0"> 
+        </form>
+
+    <form name="myform4">
+        <h4>社会の伝統的なしきたりに従っていたかどうか</h4>
+        <input type="radio" name="a2" value="0">0
+        <input type="radio" name="a2" value="1">1
+        <input type="radio" name="a2" value="2">2
+        <input type="radio" name="a2" value="3">3
+        <input type="radio" name="a2" value="4">4
+        <input type="radio" name="a2" value="5">5
+        <h4>権威に対する敬意が欠落していたかどうか</h4>
+        <input type="radio" name="b2" value="0">0
+        <input type="radio" name="b2" value="1">1
+        <input type="radio" name="b2" value="2">2
+        <input type="radio" name="b2" value="3">3
+        <input type="radio" name="b2" value="4">4
+        <input type="radio" name="b2" value="5">5
+        <h4>表彰されるような, 名誉あることをしたかどうか</h4>
+        <input type="radio" name="c2" value="0">0
+        <input type="radio" name="c2" value="1">1
+        <input type="radio" name="c2" value="2">2
+        <input type="radio" name="c2" value="3">3
+        <input type="radio" name="c2" value="4">4
+        <input type="radio" name="c2" value="5">5
+        <br>
+        <input type="hidden" name="total" value="0"> 
+        </form>
+
+    <form name="myform5">
+        <h4>病気の感染を広めるような, 不潔な行動をとっていたかどうか</h4>
+        <input type="radio" name="a3" value="0">0
+        <input type="radio" name="a3" value="1">1
+        <input type="radio" name="a3" value="2">2
+        <input type="radio" name="a3" value="3">3
+        <input type="radio" name="a3" value="4">4
+        <input type="radio" name="a3" value="5">5
+        <h4>不純な動機で行動したかどうか</h4>
+        <input type="radio" name="b3" value="0">0
+        <input type="radio" name="b3" value="1">1
+        <input type="radio" name="b3" value="2">2
+        <input type="radio" name="b3" value="3">3
+        <input type="radio" name="b3" value="4">4
+        <input type="radio" name="b3" value="5">5
+        <h4>自然環境をむやみに汚染させるような行動をとっていたかどうか</h4>
+        <input type="radio" name="c3" value="0">0
+        <input type="radio" name="c3" value="1">1
+        <input type="radio" name="c3" value="2">2
+        <input type="radio" name="c3" value="3">3
+        <input type="radio" name="c3" value="4">4
+        <input type="radio" name="c3" value="5">5
+        <br>
+        <input type="hidden" name="total" value="0"> 
+        </form>
+    
+    <br>
+    <h5>
+        "グラフを表示"ボタンを押すと、道徳観を視覚化したグラフが表示されます。
+        "危害/温情"・"公正/互恵"・"内集団/忠誠"・"権威/尊敬"・"純粋性/神聖性"、のそれぞれの軸の値の大きさは、あなたの道徳観がそれぞれの軸をどれだけ重視しているかの傾向の大きさを表します。
+    </h5>
+    <p><input type="button" value="グラフを表示" onclick="out()" /></p>
+    <div style="width:319px;" >
+        <canvas id="chart"></canvas>
+    </div>
+
+    <br>
+    <h5>
+        "グラフ画像をダウンロード"ボタンを押して、グラフ画像をダウンロードしてください。
+    </h5>
+    <button onClick="downloadImage(false)">
+        グラフ画像をダウンロード
+    </button>
+
+    <br>
+    <br>
+    <h5>
+        ダウンロードが完了しましたら、ダウンロードしたグラフ画像をGoogledriveへアップロードしてください。
+    </h5>
+    <a href="https://drive.google.com/drive/folders/1GqAYHWVh7vHZU8kfH4vWDGeN7m-mUF7d?usp=sharing">アップロードリンクはこちら</a>
+
+    <br>
+    <br>
+    <h5>
+        グラフ画像のアップロードが完了しましたら、プラットフォームサイトへ戻り、引き続き手順通りに実験を進めてください。
+    </h5>
+    
+
+        <script>
+            //harmのクリックを監視
+            var fruit_check = document.getElementsByName('fruit');
+            for(i=0;i<fruit_check.length;i++){
+                fruit_check[i].addEventListener('click', function(e){
+                    price_sum();
+                });
+            }
+            var two_check = document.getElementsByName('two');
+            for(i=0;i<two_check.length;i++){
+                two_check[i].addEventListener('click', function(e){
+                    price_sum();
+                });
+            }
+            var three_check = document.getElementsByName('three');
+            for(i=0;i<three_check.length;i++){
+                three_check[i].addEventListener('click', function(e){
+                    price_sum();
+                });
+            }
+            //fruitのクリックを監視
+            var a_check = document.getElementsByName('a');
+            for(i=0;i<a_check.length;i++){
+                a_check[i].addEventListener('click', function(e){
+                    price_sum2();
+                });
+            }
+            var b_check = document.getElementsByName('b');
+            for(i=0;i<b_check.length;i++){
+                b_check[i].addEventListener('click', function(e){
+                    price_sum2();
+                });
+            }
+            var c_check = document.getElementsByName('c');
+            for(i=0;i<c_check.length;i++){
+                c_check[i].addEventListener('click', function(e){
+                    price_sum2();
+                });
+            }
+            //fruitのクリックを監視
+            var a1_check = document.getElementsByName('a1');
+            for(i=0;i<a1_check.length;i++){
+                a1_check[i].addEventListener('click', function(e){
+                    price_sum3();
+                });
+            }
+            var b1_check = document.getElementsByName('b1');
+            for(i=0;i<b1_check.length;i++){
+                b1_check[i].addEventListener('click', function(e){
+                    price_sum3();
+                });
+            }
+            var c1_check = document.getElementsByName('c1');
+            for(i=0;i<c1_check.length;i++){
+                c1_check[i].addEventListener('click', function(e){
+                    price_sum3();
+                });
+            }
+            //fruitのクリックを監視
+            var a2_check = document.getElementsByName('a2');
+            for(i=0;i<a2_check.length;i++){
+                a2_check[i].addEventListener('click', function(e){
+                    price_sum4();
+                });
+            }
+            var b2_check = document.getElementsByName('b2');
+            for(i=0;i<b2_check.length;i++){
+                b2_check[i].addEventListener('click', function(e){
+                    price_sum4();
+                });
+            }
+            var c2_check = document.getElementsByName('c2');
+            for(i=0;i<c2_check.length;i++){
+                c2_check[i].addEventListener('click', function(e){
+                    price_sum4();
+                });
+            }
+            //fruitのクリックを監視
+            var a3_check = document.getElementsByName('a3');
+            for(i=0;i<a3_check.length;i++){
+                a3_check[i].addEventListener('click', function(e){
+                    price_sum5();
+                });
+            }
+            var b3_check = document.getElementsByName('b3');
+            for(i=0;i<b3_check.length;i++){
+                b3_check[i].addEventListener('click', function(e){
+                    price_sum5();
+                });
+            }
+            var c3_check = document.getElementsByName('c3');
+            for(i=0;i<c3_check.length;i++){
+                c3_check[i].addEventListener('click', function(e){
+                    price_sum5();
+                });
+            }
+
+
+
+            //harm平均計算
+            function price_sum(){
+                var sum = 0;
+                
+                for (var i = 0; i < fruit_check.length; i++){
+                    if(fruit_check[i].checked){
+                        sum += parseInt(fruit_check[i].value);
+                    }
+                }
+                for (var i = 0; i < two_check.length; i++){
+                    if(two_check[i].checked){
+                        sum += parseInt(two_check[i].value);
+                    }
+                }
+                for (var i = 0; i < three_check.length; i++){
+                    if(three_check[i].checked){
+                        sum += parseInt(three_check[i].value);
+                    }
+                }
+
+                document.myform.total.value=sum/3;
+                harm=sum/3;
+            }
+            //harm平均計算
+            function price_sum2(){
+                var sum = 0;
+                
+                for (var i = 0; i < a_check.length; i++){
+                    if(a_check[i].checked){
+                        sum += parseInt(a_check[i].value);
+                    }
+                }
+                for (var i = 0; i < b_check.length; i++){
+                    if(b_check[i].checked){
+                        sum += parseInt(b_check[i].value);
+                    }
+                }
+                for (var i = 0; i < c_check.length; i++){
+                    if(c_check[i].checked){
+                        sum += parseInt(c_check[i].value);
+                    }
+                }
+
+                document.myform2.total.value=sum/3;
+            }
+            //harm平均計算
+            function price_sum3(){
+                var sum = 0;
+                
+                for (var i = 0; i < a1_check.length; i++){
+                    if(a1_check[i].checked){
+                        sum += parseInt(a1_check[i].value);
+                    }
+                }
+                for (var i = 0; i < b1_check.length; i++){
+                    if(b1_check[i].checked){
+                        sum += parseInt(b1_check[i].value);
+                    }
+                }
+                for (var i = 0; i < c1_check.length; i++){
+                    if(c1_check[i].checked){
+                        sum += parseInt(c1_check[i].value);
+                    }
+                }
+
+                document.myform3.total.value=sum/3;
+            }
+            //harm平均計算
+            function price_sum4(){
+                var sum = 0;
+                
+                for (var i = 0; i < a2_check.length; i++){
+                    if(a2_check[i].checked){
+                        sum += parseInt(a2_check[i].value);
+                    }
+                }
+                for (var i = 0; i < b2_check.length; i++){
+                    if(b2_check[i].checked){
+                        sum += parseInt(b2_check[i].value);
+                    }
+                }
+                for (var i = 0; i < c2_check.length; i++){
+                    if(c2_check[i].checked){
+                        sum += parseInt(c2_check[i].value);
+                    }
+                }
+
+                document.myform4.total.value=sum/3;
+            }
+            //harm平均計算
+            function price_sum5(){
+                var sum = 0;
+                
+                for (var i = 0; i < a3_check.length; i++){
+                    if(a3_check[i].checked){
+                        sum += parseInt(a3_check[i].value);
+                    }
+                }
+                for (var i = 0; i < b3_check.length; i++){
+                    if(b3_check[i].checked){
+                        sum += parseInt(b3_check[i].value);
+                    }
+                }
+                for (var i = 0; i < c3_check.length; i++){
+                    if(c3_check[i].checked){
+                        sum += parseInt(c3_check[i].value);
+                    }
+                }
+
+                document.myform5.total.value=sum/3;
+            }
+
+            
+            function butotnClick(){
+                 msg.innerText = 'ニックネーム：' + nameText.value;
+            }
+
+            let nameText = document.getElementById('nameText');
+            let msg = document.getElementById('msg');
+
+            let checkButton = document.getElementById('checkButton');
+            checkButton.addEventListener('click', butotnClick);
+
+            function out(){
+                var datasets = [
+                    {
+                        label: nameText.value + "さんの道徳観",
+                        data: [document.myform.total.value, document.myform2.total.value, document.myform3.total.value, document.myform4.total.value, document.myform5.total.value] ,
+                        backgroundColor: ['#3F88C5'] // 配列にしておく必要がある
+                    }
+                    ]
+
+                // 各棒グラフの値が正か負かによって色分け
+                for (var i = 0; i < datasets[0].data.length; i++) {
+                    if (i == 0) {
+                        datasets[0].backgroundColor[i] = '#ff0000' // 値が正の場合は青
+                    } 
+                    else if (i == 1) {
+                        datasets[0].backgroundColor[i] = '#dc143c' // 値が正の場合は青
+                    } 
+                    else if (i == 2) {
+                        datasets[0].backgroundColor[i] = '#000080' // 値が正の場合は青
+                    } 
+                    else if (i == 3) {
+                        datasets[0].backgroundColor[i] = '#0000ff' // 値が正の場合は青
+                    } 
+                    else if (i == 4) {
+                        datasets[0].backgroundColor[i] = '#00ff00' // 値が正の場合は青
+                    } 
+                }
+
+                var ctx = document.getElementById("chart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                type: "bar",    // ★必須　グラフの種類
+                data: {
+                    labels:  ["危害/温情", "公正/互恵", "内集団/忠誠", "権威/尊敬", "純粋性/神聖性"],  // Ｘ軸のラベル
+                    datasets: datasets
+                }, 
+	            options: {                       // オプション
+                responsive: true,  // canvasサイズ自動設定機能を使わない。HTMLで指定したサイズに固定
+                scales: {                          // 軸設定
+                    xAxes: [{                       // Ｘ軸設定
+                    }],
+                    yAxes: [{
+                         display: true,                 // 表示の有無
+                         ticks: {                       // 目盛り
+                            min: 0,                        // 最小値
+                            max: 5,                       // 最大値
+                                },
+                            }],
+                        },
+                    }
+                });
+            }
+            
+
+
+            const downloadImage = (transparent = true) => {
+            const canvas = document.querySelector('#chart');
+  
+            let targetCanvas = canvas; 
+            if(!transparent) {
+                // 透過なしの場合、ここで背景指定した別のcanvasを用意して上書きしてあげる!
+    
+                const dummyCanvas = document.createElement("canvas");
+                dummyCanvas.width = canvas.width
+                dummyCanvas.height = canvas.height
+
+                const dummyCtx = dummyCanvas.getContext('2d');
+
+                dummyCtx.fillStyle = "#FFFFFF";
+                dummyCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+                dummyCtx.drawImage(canvas, 0, 0);
+                targetCanvas = dummyCanvas
+            }
+  
+            // dummy のaタグを用意して疑似クリック
+            const dummyLink = document.createElement("a");
+            dummyLink.type = 'application/octet-stream';
+            dummyLink.download = nameText.value + '.png'
+            dummyLink.href = targetCanvas.toDataURL('image/png')
+            dummyLink.click()
+            
+        }
+        
+        </script>
+</body>
+</html>

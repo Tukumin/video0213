@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VideoChat</title>
+    <link rel="stylesheet" href="styleaaa.css?12">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">VideoChat</h1>
+      <p class="note">
+        Change Room mode (before join in a room):
+        <a href="#">mesh</a> / <a href="#sfu">sfu</a>
+      </p>
+      <div class="room">
+        <div>
+          <video id="js-local-stream"></video>
+          <div>
+            <input type="button" onclick="sampleimg1()" value="1">
+            <input type="button" onclick="sampleimg2()" value="2">
+            <input type="button" onclick="sampleimg3()" value="3">
+            <input type="button" onclick="sampleimg4()" value="4">
+            <input type="button" onclick="sampleimg5()" value="5">
+            <br>
+            
+            <img id="image_file" src="" />
+  
+            <!---
+            <img src="gazou.png" alt="Dummy" class = "status">
+            <img src="gazou.png" alt="Dummy" class = "status">
+            <img src="gazou.png" alt="Dummy" class = "status">
+            <img src="gazou.png" alt="Dummy" class = "status">
+            <img src="gazou.png" alt="Dummy" class = "status">
+            --->
+  
+          </div>
+          <span id="js-room-mode"></span>:
+          <input type="text" placeholder="Room Name" id="js-room-id" value="videochat">
+          <button id="js-join-trigger">Join</button>
+          <button id="js-leave-trigger">Leave</button>
+          <h6>1:ayakaさん2:takeruさん3:yamadaさん4:nogutiさん5:soutaさん</h6>
+          <pre class="messages" id="js-messages"></pre>
+          <input type="text" id="js-local-text">
+          <button id="js-send-trigger">Send</button>
+        </div>
+
+        <div class="remote-streams" id="js-remote-streams"></div>
+
+        <div>
+          <p><img src="faciri.png" alt="Dummy" class = "faciri"></p>
+          <div>
+          <input type="button" onclick="asampleimg1()" value="1">
+          <input type="button" onclick="asampleimg2()" value="2">
+          <input type="button" onclick="asampleimg3()" value="3">
+          <input type="button" onclick="asampleimg4()" value="4">
+          <input type="button" onclick="asampleimg5()" value="5">
+          <br>
+          <img id="aimage_file" src="" />
+          </div>
+          <div>
+            <input type="button" onclick="bsampleimg1()" value="1">
+            <input type="button" onclick="bsampleimg2()" value="2">
+            <input type="button" onclick="bsampleimg3()" value="3">
+            <input type="button" onclick="bsampleimg4()" value="4">
+            <input type="button" onclick="bsampleimg5()" value="5">
+            <br>
+            <img id="bimage_file" src="" />
+          </div>
+          <div>
+            <input type="button" onclick="csampleimg1()" value="1">
+            <input type="button" onclick="csampleimg2()" value="2">
+            <input type="button" onclick="csampleimg3()" value="3">
+            <input type="button" onclick="csampleimg4()" value="4">
+            <input type="button" onclick="csampleimg5()" value="5">
+            <br>
+            <img id="cimage_file" src="" />
+          </div>
+        </div>
+
+      </div>
+      <p class="meta" id="js-meta"></p>
+    </div>
+    <script src="//cdn.webrtc.ecl.ntt.com/skyway-4.4.5.js"></script>
+    <script src="./key.js"></script>
+    <script src="./script.js"></script>
+    <script>
+      var img;
+  
+      function sampleimg1(){
+      img = document.getElementById("image_file");
+      img.src = "ayaka.png";
+      }
+      function sampleimg2(){
+      img = document.getElementById("image_file");
+      img.src = "takeru.png";
+      }
+      function sampleimg3(){
+      img = document.getElementById("image_file");
+      img.src = "yamada.png";
+      }
+      function sampleimg4(){
+      img = document.getElementById("image_file");
+      img.src = "noguti.png";
+      }
+      function sampleimg5(){
+      img = document.getElementById("image_file");
+      img.src = "souta.png";
+      }
+
+      function asampleimg1(){
+      img = document.getElementById("aimage_file");
+      img.src = "ayaka.png";
+      }
+      function asampleimg2(){
+      img = document.getElementById("aimage_file");
+      img.src = "takeru.png";
+      }
+      function asampleimg3(){
+      img = document.getElementById("aimage_file");
+      img.src = "yamada.png";
+      }
+      function asampleimg4(){
+      img = document.getElementById("aimage_file");
+      img.src = "noguti.png";
+      }
+      function asampleimg5(){
+      img = document.getElementById("aimage_file");
+      img.src = "souta.png";
+      }
+
+      function bsampleimg1(){
+      img = document.getElementById("bimage_file");
+      img.src = "ayaka.png";
+      }
+      function bsampleimg2(){
+      img = document.getElementById("bimage_file");
+      img.src = "takeru.png";
+      }
+      function bsampleimg3(){
+      img = document.getElementById("bimage_file");
+      img.src = "yamada.png";
+      }
+      function bsampleimg4(){
+      img = document.getElementById("bimage_file");
+      img.src = "noguti.png";
+      }
+      function bsampleimg5(){
+      img = document.getElementById("bimage_file");
+      img.src = "souta.png";
+      }
+
+      function csampleimg1(){
+      img = document.getElementById("cimage_file");
+      img.src = "ayaka.png";
+      }
+      function csampleimg2(){
+      img = document.getElementById("cimage_file");
+      img.src = "takeru.png";
+      }
+      function csampleimg3(){
+      img = document.getElementById("cimage_file");
+      img.src = "yamada.png";
+      }
+      function csampleimg4(){
+      img = document.getElementById("cimage_file");
+      img.src = "noguti.png";
+      }
+      function csampleimg5(){
+      img = document.getElementById("cimage_file");
+      img.src = "souta.png";
+      }
+  
+      </script>
+  </body>
+</html>

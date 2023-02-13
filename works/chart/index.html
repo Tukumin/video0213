@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chart</title>
+    </head>
+    <body>
+        <p>危害/温情： <span id="span2"></span></p>
+        <input type="number" id="number2" value="0" max="5" />
+        <input type="button" value="設定" onclick="clickBtn3()" />
+
+        <p>公正/互恵： <span id="span4"></span></p>
+        <input type="number" id="number4" value="0" max="5" />
+        <input type="button" value="設定" onclick="clickBtn5()" />
+
+        <p>内集団/忠誠： <span id="span6"></span></p>
+        <input type="number" id="number6" value="0" max="5" />
+        <input type="button" value="設定" onclick="clickBtn7()" />
+
+        <p>権威/尊敬： <span id="span8"></span></p>
+        <input type="number" id="number8" value="0" max="5" />
+        <input type="button" value="設定" onclick="clickBtn9()" />
+
+        <p>純粋性/神聖性： <span id="span10"></span></p>
+        <input type="number" id="number10" value="0" max="5" />
+        <input type="button" value="設定" onclick="clickBtn11()" />
+
+        <p><input type="button" value="グラフを表示" onclick="out()" /></p>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.js"></script>
+        <canvas id="myRadarChart" width="200" height="200"></canvas>
+
+        <script>
+             function clickBtn3() {
+             number2 = document.getElementById("number2");
+             document.getElementById("span2").textContent = number2.value;
+             console.log(number2.value);
+            }
+
+            function clickBtn5() {
+             number4 = document.getElementById("number4");
+             document.getElementById("span4").textContent = number4.value;
+            }
+
+            function clickBtn7() {
+             number6 = document.getElementById("number6");
+             document.getElementById("span6").textContent = number6.value;
+            }
+
+            function clickBtn9() {
+             number8 = document.getElementById("number8");
+             document.getElementById("span8").textContent = number8.value;
+            }
+
+            function clickBtn11() {
+             number10 = document.getElementById("number10");
+             document.getElementById("span10").textContent = number10.value;
+            }
+        
+            console.log(number2.value);
+            num1 = 10;
+            num2 = 20;
+
+            function out() {
+                var ctx = document.getElementById("myRadarChart");
+                var myRadarChart = new Chart(ctx, {
+                    //グラフの種類
+                    type: 'radar',
+                    //データの設定
+                    data: {
+                        labels: ['危害/温情', '公正/互恵', '内集団/忠誠', '権威/尊敬', '純粋性/神聖性'],
+                        datasets: [{
+                        label: '道徳観',
+                        //グラフのデータ
+                        data: [number2.value, number4.value, number6.value, number8.value, number10.value],
+                        // データライン
+                        borderColor: 'red',
+                        }],
+                    },
+                    //オプションの設定
+                    options: {
+                        scales: {
+                        r: {
+                            //グラフの最小値・最大値
+                            min: 0,
+                            max: 5,
+                            //背景色
+                            backgroundColor: 'snow',
+                            //グリッドライン
+                            grid: {
+                            color: 'pink',
+                            },
+                            //アングルライン
+                            angleLines: {
+                            color: 'green',
+                            },
+                            //各項目のラベル
+                            pointLabels: {
+                            color: 'blue',
+                            },
+                        },
+                        },
+                    }, 
+                });
+
+            }
+
+        </script>
+        
+    </body>
+</html>
